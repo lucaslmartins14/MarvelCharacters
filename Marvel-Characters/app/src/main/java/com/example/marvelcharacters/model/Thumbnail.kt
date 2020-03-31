@@ -1,4 +1,4 @@
-package com.example.marvelcharacters
+package com.example.marvelcharacters.model
 
 import com.google.gson.annotations.Expose
 
