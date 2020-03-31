@@ -10,14 +10,19 @@ import com.example.marvelcharacters.model.Data
 import com.example.marvelcharacters.model.Results
 import kotlinx.coroutines.Dispatchers
 
-class ComicsViewModel() : ViewModel() {
-    internal var allComics: MutableLiveData<List<Results>> = MutableLiveData()
-    init {
-        allComics.value = DataRepository().comics
+class ComicsViewModel : ViewModel() {
+    private var allComics = MutableLiveData<List<Results>>()
+    fun getallComics(): LiveData<List<Results>> = allComics
+
+    fun loadComics(comics: MutableLiveData<List<Results>>){
+        allComics = comics
+        allComics.mutation { it ->
+            it.postValue(comics.value)
+        }
     }
 
-    fun setComics(comics: List<Results>){
-        allComics.value = comics
+    fun <T> MutableLiveData<T>.mutation(actions: (MutableLiveData<T>) -> Unit) {
+        actions(this)
+        this.value = this.value
     }
-
 }

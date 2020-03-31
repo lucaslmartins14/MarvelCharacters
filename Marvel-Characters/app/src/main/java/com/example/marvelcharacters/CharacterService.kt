@@ -12,6 +12,7 @@ interface CharacterService {
                       @Query("ts") ts: Int,
                       @Query("apikey") apikey: String,
                       @Query("hash") hash: String): Call<Object>
+
     @GET("comics")
     fun getComics( @Query("ts") ts: Int,
                    @Query("apikey") apikey: String,
