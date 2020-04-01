@@ -1,4 +1,4 @@
-package com.example.marvelcharacters
+package com.example.marvelcharacters.utils
 
 abstract class GenericCallback<T> {
 
